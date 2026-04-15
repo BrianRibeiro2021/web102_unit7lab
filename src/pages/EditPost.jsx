@@ -1,8 +1,24 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./EditPost.css";
+import { supabase } from "../client";
 
 const EditPost = ({ data }) => {
+  const updatePost = async (event) => {
+    event.preventDefault();
+
+    await supabase
+      .from("Posts")
+      .update({
+        title: post.title,
+        author: post.author,
+        description: post.description,
+      })
+      .eq("id", id);
+
+    window.location = "/";
+  };
+
   const { id } = useParams();
   const [post, setPost] = useState({
     id: null,
@@ -56,7 +72,7 @@ const EditPost = ({ data }) => {
           onChange={handleChange}
         ></textarea>
         <br />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" onClick={updatePost} />
         <button className="deleteButton">Delete</button>
       </form>
     </div>
