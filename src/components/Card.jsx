@@ -29,6 +29,10 @@ const Card = (props) => {
       <button className="betButton" onClick={updateCount}>
         👍 Bet Count: {count}
       </button>
+      <div className="tags">
+        <span className="spiciness">🌶️ {props.spiciness}/10</span>
+        <span className="category"> 🏷️ {props.category}</span>
+      </div>
     </div>
   );
 };

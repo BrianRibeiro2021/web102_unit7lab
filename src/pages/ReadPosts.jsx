@@ -30,6 +30,8 @@ const ReadPosts = (props) => {
               title={post.title}
               author={post.author}
               description={post.description}
+              spiciness={post.spiciness}
+              category={post.category}
               betCount={post.betCount}
             />
           ))
